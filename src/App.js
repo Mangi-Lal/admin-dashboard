@@ -239,14 +239,14 @@ const searchData = (searchValue) => {
         <div className='flex space-x-4 items-center text-[0.9rem]'>
           <span>Page {currentPage+1} of {totalPages.length}</span>
           <div className='flex button-grp text-sm space-x-2' >
-          <button title='more_previous'
+          <button className='first-page' title='more_previous'
            onClick={
             () => {
               setCurrentPage(0)
             }
           }
           > &lt;&lt; </button>
-          <button title='previous' 
+          <button className='previous-page' title='previous' 
            onClick={
             () => {
               if (currentPage > 0)
@@ -258,13 +258,21 @@ const searchData = (searchValue) => {
           > &lt; </button>
           {totalPages.map((item, index) =>{
             return (
-              <button key={index} className={
+              <button onClick={
+                () => {
+                  if (currentPage < totalPages.length-1)
+                  {
+                  setCurrentPage(index)
+                }
+                }
+              } 
+              key={index} className={
                 `border rounded-md p-[0.15rem] w-[2rem] shadow-sm border-gray-300 aspect-square 
                 ${currentPage === index ? '' : 'bg-white text-gray-500'}`
               } title={index+1}>{item}</button>
             )
           })}
-          <button title='next' onClick={
+          <button className='next-page' title='next' onClick={
             () => {
               if (currentPage < totalPages.length-1)
               {
@@ -272,7 +280,7 @@ const searchData = (searchValue) => {
             }
             }
           }> &gt; </button>
-          <button title='next_jump'
+          <button className='last-page' title='next_jump'
           onClick={
             () => {
               setCurrentPage(totalPages.length-1)
