@@ -61,7 +61,7 @@ const searchData = (searchValue) => {
   return (
     <div className="App p-5 flex flex-col space-y-4 font-mono">
       <div className="flex justify-between ">
-        <span className='w-1/3 flex items-center'>
+        <span className='search-icon w-1/3 flex items-center'>
         <input 
         id='searchdata' 
         onChange={
@@ -92,7 +92,8 @@ const searchData = (searchValue) => {
             window.confirm('Are you sure you want to delete these rows?') &&
             delteRows()
           }
-        } disabled={selectedrows.length === 0 ? true : false } className=" disabled:bg-red-400 bg-red-500 text-white shadow-[0px_0px_20px_2px_#a0a0a040] rounded-md p-2 w-[3rem] aspect-square">
+        } disabled={selectedrows.length === 0 ? true : false } 
+        className="delete disabled:bg-red-400 bg-red-500 text-white shadow-[0px_0px_20px_2px_#a0a0a040] rounded-md p-2 w-[3rem] aspect-square">
           <img className="w-full drop-shadow-3xl h-full" 
            style={
             {
@@ -209,7 +210,7 @@ const searchData = (searchValue) => {
                 setFilteredData(newData)
              }}/> :item.role}</td>
              <td className='flex space-x-2'>
-             <button  className=" border rounded-md p-[0.45rem] w-[2rem] shadow-sm border-gray-300 aspect-square">
+             <button  className="edit border rounded-md p-[0.45rem] w-[2rem] shadow-sm border-gray-300 aspect-square">
            <img onClick={
               () => {
                 seteditable(item.id === editable ? '' : item.id)
@@ -217,7 +218,7 @@ const searchData = (searchValue) => {
            } className="w-full drop-shadow-3xl h-full" 
            src={edit} alt="edit" />
          </button>
-         <button className=" border rounded-md p-[0.15rem] w-[2rem] shadow-sm border-gray-300 aspect-square">
+         <button className="delete border rounded-md p-[0.15rem] w-[2rem] shadow-sm border-gray-300 aspect-square">
            <img className="w-full drop-shadow-3xl h-full" 
            onClick={
             () => {
